@@ -1,0 +1,20 @@
+﻿@page
+@model Frou_Frou_Feline_Cafe.Pages.Restaurants.ListModel
+@{
+}
+
+<h1>Restaurants</h1>
+
+<table class="table">
+    @foreach(var restaurant in Model.Restaurants)
+    {
+        <tr>
+            <td>@restaurant.Name</td>
+            <td>@restaurant.Location</td>
+            <td>@restaurant.ResType</td>
+        </tr>
+    }
+</table>
+
+
+<div>@Model.Message</div>

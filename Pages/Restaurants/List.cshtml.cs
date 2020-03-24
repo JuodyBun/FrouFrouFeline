@@ -20,9 +20,10 @@ namespace Frou_Frou_Feline_Cafe.Pages.Restaurants
     {
         private readonly IConfiguration config;
         private readonly IRestaurantData restaurantData;
-
         public string Message { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
+        [BindProperty(SupportsGet =true)]
+        public string SearchTerm { get; set; }
 
         public ListModel(IConfiguration config, IRestaurantData restaurantData) //constructor w/ IConfiguration (needs Extensions.Configuration)
         {
@@ -32,7 +33,7 @@ namespace Frou_Frou_Feline_Cafe.Pages.Restaurants
         public void OnGet() //responds to the HTTP GET request
         {
             Message = config["Message"];
-            Restaurants = restaurantData.GetAll();
+            Restaurants = restaurantData.GetRestaurantsByName(SearchTerm);
         }
     }
 }
